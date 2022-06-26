@@ -8,27 +8,27 @@ from blog.models import Blog
 
 class BlogListView(ListView):
     model = Blog
-    template_name = "blog/blog_list.html"
+    template_name = "post/post_list.html"
 
 
 class BlogDetailView(DetailView):
     model = Blog
-    template_name = "blog/blog_detail.html"
+    template_name = "post/post_detail.html"
     fields = ['title', 'date']
 
 
 class BlogCreateView(CreateView):
     model = Blog
-    success_url = reverse_lazy('blog:blog-list')
+    success_url = reverse_lazy('blog:post-list')
     fields = ['title', 'subtitle', 'body']
 
 
 class BlogUpdateView(UpdateView):
     model = Blog
-    success_url = reverse_lazy('blog:blog-list')
+    success_url = reverse_lazy('blog:post-list')
     fields = ['title', 'subtitle', 'body']
 
 
 class BlogDeleteView(DeleteView):
     model = Blog
-    success_url = reverse_lazy('blog:blog-list')
+    success_url = reverse_lazy('blog:post-list')
