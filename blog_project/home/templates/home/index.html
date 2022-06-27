@@ -24,13 +24,13 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'home:main' %}">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'page:page-list' %}">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account:account-update' %}">Profile</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
                         {% if user.is_authenticated %}
-                        <li class="nav-item"><a class="btn btn-secondary" href="#!">Logout</a></li>
+                        <li class="nav-item"><a class="btn btn-secondary" href="{% url 'account:account-logout' %}">Logout</a></li>
                         {% else %}
-                        <li class="nav-item"><a class="btn btn-primary" href="#!">Login/Sign up</a></li>
+                        <li class="nav-item"><a class="btn btn-primary" href="{% url 'account:account-login' %}">Login/Sign up</a></li>
                         {% endif %}
                     </ul>
                 </div>
