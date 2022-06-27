@@ -1,0 +1,30 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block blog_project_content %}
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1">{{ page.title }}</h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2">Posted on {{ page.date }} by {{ page.account }}</div>
+                </header>
+                <!-- Preview image figure-->
+                
+                <!-- Post content-->
+                <section class="mb-5">
+                    {{ page.content_post | safe }}
+                </section>
+            </article>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

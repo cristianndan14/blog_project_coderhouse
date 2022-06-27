@@ -1,0 +1,22 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block blog_project_content %}
+
+<div class="container">
+    
+
+    <h2>Create/edit post</h2>
+    <hr></hr>
+    <form class="mb-4" action="" method="POST">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary" value="Save post" />
+    </form>
+
+
+    
+</div>
+
+
+{% endblock %}

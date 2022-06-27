@@ -1,5 +1,11 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import render
+from django.db.models import Q
 
 
 def index(request):
-    return render(request, template_name="home/main.html")
+    return render(
+        request=request,
+        template_name="home/main.html"
+    )
+
+
