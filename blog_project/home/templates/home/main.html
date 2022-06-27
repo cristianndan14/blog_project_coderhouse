@@ -2,10 +2,58 @@
 {% load static %}
 {% block blog_project_content %}
 
+<div class="container">
+    {% if user.is_authenticated %}
+    <div class="text-center">
+        <h2>Bienvenido {{ user.username }}</h2>
+        <h3><a style="color: rgb(3, 36, 184)" href="{% url 'account:avatar-load' %}">Change Avatar</a></h3>
+        <img height="160px" src="{{url}}" alt="">
+    </div>
+    {% endif %}
+    <h2>Buscador de cursos</h2>
+    <hr>
+    </hr>
+
+    <form action="/search" method="GET">
+        <div>
+            <input type="text" name="search_param" id="post_or_account" placeholder="Buscar.."
+            {% if search_param %} value="{{ search_param }}" {% endif %}
+            >
+            <input type="submit" value="Buscar">
+            <a style="color: blue" href="{% url 'home:main' %}"><i class="fa fa-undo"></i> refresh </a>
+        </div>
+
+    </form>
+
+    <hr>
+    </hr>
 
 
-
-
-
+    {% if pages %}
+    <ul>
+        {% for page in pages %}
+        <li>
+            <div class="card-body"> {{page.title}} -- {{page.account}} -- {{page.date}}
+                (
+                <a href="{% url 'page:page-detail' page.id %}">
+                    <i class="fa fa-eye" style="color: rgb(0, 0, 255);"> Read more </i>
+                </a>
+                {% if user.is_authenticated %}
+                |
+                <a href="{% url 'page:page-update' page.id %}">
+                    <i class="fa fa-pencil" style="color: rgb(0, 0, 190);"> Edit </i>
+                </a>
+                |
+                <a href="{% url 'page:page-delete' page.id %}">
+                    <i class="fa fa-trash" style="color: rgb(0, 0, 100);"> Delete </i>
+                </a>
+                {% endif %}
+                )
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>>
 
 {% endblock %}

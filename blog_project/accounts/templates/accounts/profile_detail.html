@@ -1,0 +1,32 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block blog_project_content %}
+
+<div class="container">
+
+    {% if user.is_authenticated %}
+        <div class="text-center">
+            <h2>Bienvenido {{ user.username }}</h2>
+            <img height="160px" src="{{url}}" alt="">
+            <h5><a style="color: rgb(3, 36, 184)" href="{% url 'account:avatar-load' %}">Change Avatar</a></h5>
+        </div>
+        <br>
+        <div class="text-center">
+            <h4>USER DATE</h4>
+            <p>
+            Firts name: {{user.first_name}}
+            <br>
+            Last name: {{user.last_name}}
+            <br>
+            Email: {{user.email}}
+            </p>
+            <h5><a style="color: rgb(3, 36, 184)" href="{% url 'account:account-update' %}">Edit user date</a></h5>
+        </div>
+        <br>
+        <br>
+    {% endif %}
+
+
+</div>
+
+{% endblock %}

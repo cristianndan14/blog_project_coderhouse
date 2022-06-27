@@ -1,4 +1,3 @@
-
 import os
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -9,7 +8,9 @@ from django.shortcuts import redirect, render
 
 
 from accounts.forms import UserRegisterForm, UserEditForm, AvatarForm
+from django.contrib.auth.models import User
 from accounts.models import Avatar
+from django.views.generic.detail import DetailView
 
 
 def register(request):
@@ -99,3 +100,17 @@ def avatar_load(request):
         context={"form": form},
         template_name="accounts/avatar_form.html",
     )
+
+
+def profile(request):
+    avatar_ctx = get_avatar_url_ctx(request)
+    context_dict = {**avatar_ctx}
+    return render(request=request,
+    context=context_dict,
+    template_name="accounts/profile_detail.html")
+
+def get_avatar_url_ctx(request):
+    avatars = Avatar.objects.filter(user=request.user.id)
+    if avatars.exists():
+        return {"url": avatars[0].image.url}
+    return {}

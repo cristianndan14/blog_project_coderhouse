@@ -24,10 +24,9 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'home:main' %}">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'page:page-list' %}">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'account:account-update' %}">Profile</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
                         {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account:profile-detail' %}">Profile</a></li>
                         <li class="nav-item"><a class="btn btn-secondary" href="{% url 'account:account-logout' %}">Logout</a></li>
                         {% else %}
                         <li class="nav-item"><a class="btn btn-primary" href="{% url 'account:account-login' %}">Login/Sign up</a></li>
@@ -40,7 +39,7 @@
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
                 <div class="text-center my-5">
-                    <h1 class="fw-bolder">Welcome {{user}} </h1>
+                    <h1 class="fw-bolder">{{app_name}} </h1>
                     {% if user.is_superuser %}
                     <h5><p style="color: rgb(0, 20, 131)" >SuperUser</p></h5>
                     {% else %}
@@ -49,7 +48,7 @@
         
                     {% if messages %}
                         {% for message in messages %}
-                        <p {% if message.tags %} class="lead mb-0 {{ message.tags }}" {% endif %}>{{ message }}}</p>
+                        <p {% if message.tags %} class="lead mb-0 {{ message.tags }}" {% endif %}>{{ message }}</p>
                         {% endfor %}
                     {% endif %}
                 
