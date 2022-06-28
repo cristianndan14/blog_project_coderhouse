@@ -1,18 +1,21 @@
 {% extends "home/index.html" %}
 {% load static %}
 {% block blog_project_content %}
+<div class="container">
+    <h2>Sign up</h2>
+    <hr></hr>
 
-<h2>Sign up</h2>
-<hr></hr>
+    {% if form.errors %}
+    <p style="color: red">Please, try again.</p>
+    {% endif %}
 
-{% if form.errors %}
-<p style="color: red">Please, try again.</p>
-{% endif %}
-
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up user</button>
-</form>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign up user</button>
+    </form>
+    </br>
+    </br>
+</div>
 
 {% endblock %}

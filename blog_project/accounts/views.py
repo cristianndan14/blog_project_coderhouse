@@ -92,7 +92,7 @@ def avatar_load(request):
                 avatar.image = image
             avatar.save()
             messages.success(request, "Imagen cargada exitosamente")
-            return redirect('home:main')
+            return redirect('account:profile-detail')
 
     form= AvatarForm()
     return render(

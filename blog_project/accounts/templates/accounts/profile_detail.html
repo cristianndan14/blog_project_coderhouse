@@ -8,7 +8,7 @@
         <div class="text-center">
             <h2>Bienvenido {{ user.username }}</h2>
             <img height="160px" src="{{url}}" alt="">
-            <h5><a style="color: rgb(3, 36, 184)" href="{% url 'account:avatar-load' %}">Change Avatar</a></h5>
+            <h5><a class="btn bg-dark" style="color: white" href="{% url 'account:avatar-load' %}">Change Avatar</a></h5>
         </div>
         <br>
         <div class="text-center">
@@ -20,7 +20,14 @@
             <br>
             Email: {{user.email}}
             </p>
-            <h5><a style="color: rgb(3, 36, 184)" href="{% url 'account:account-update' %}">Edit user date</a></h5>
+
+            {% if user.is_superuser %}
+            <h5><p style="color: rgb(0, 20, 131)" >You are a SuperUser</p></h5>
+            {% else %}
+            <h5><p style="color: rgb(0, 20, 131)" >You are NOT a SuperUser</p></h5>
+            {%endif%}
+
+            <h5><a class="btn btn-primary" style="color: white" href="{% url 'account:account-update' %}">Edit user date</a></h5>
         </div>
         <br>
         <br>

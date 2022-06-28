@@ -6,7 +6,6 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from pages.models import Page
-from message.models import Comment
 
 
 class PageListView(ListView):
@@ -35,3 +34,4 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
 class PageDeleteView(LoginRequiredMixin, DeleteView):
     model = Page
     success_url = reverse_lazy('page:page-list')
+

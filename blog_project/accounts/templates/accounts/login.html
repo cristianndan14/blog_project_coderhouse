@@ -1,19 +1,22 @@
 {% extends "home/index.html" %}
 {% load static %}
 {% block blog_project_content %}
+<div class="container text-center">
+    <h2>Login</h2>
+    <hr></hr>
 
-<h2>Login</h2>
-<hr></hr>
+    {% if form.errors %}
+    <p style="color: red">Username and password incorrect, please try again.</p>
+    {% endif %}
 
-{% if form.errors %}
-<p style="color: red">Username and password incorrect, please try again.</p>
-{% endif %}
-
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <a class="btn2 btn-dark" href="{% url 'account:account-register' %}" >Sign up</a>
-    <button type="submit">Login</button>
-</form>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a class="btn btn-dark" href="{% url 'account:account-register' %}" >Sign up</a>
+        <button type="submit">Login</button>
+        </br>
+        </br>
+    </form>
+</div>
 
 {% endblock %}
