@@ -25,6 +25,7 @@ urlpatterns = [
     path('message/', include('message.urls')),
     path('about/', include('about.urls')),
     path('accounts/', include('accounts.urls')),
+    path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 if settings.DEBUG:

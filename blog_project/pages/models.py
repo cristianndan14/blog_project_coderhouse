@@ -1,5 +1,4 @@
 from distutils.command.upload import upload
-from turtle import title
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
@@ -12,6 +11,9 @@ class Page(models.Model):
     image = models.ImageField(upload_to='photos', null=True, blank=True)
     account = models.ForeignKey(User, on_delete=models.CASCADE)
     content_post = RichTextField('Contenido del post')
+    
 
     def __str__(self):
         return f'{self.title} -- Fecha de creación: {self.date} -- {self.account}'
+
+
