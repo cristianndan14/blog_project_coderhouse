@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'pages',
     'home',
     'message',
-    'about',
     'accounts',
     'ckeditor',
 ]

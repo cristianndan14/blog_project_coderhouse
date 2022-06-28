@@ -7,6 +7,12 @@
     {% if user.is_authenticated %}
         <div class="text-center">
             <h2>Bienvenido {{ user.username }}</h2>
+            <br>
+            {% if messages %}
+            {% for message in messages %}
+            <p {% if message.tags %} class="lead mb-0 {{ message.tags }}" style="color: red" {%endif %}>{{ message }}</p>
+            {% endfor %}
+            {% endif %}
             <img height="160px" src="{{url}}" alt="">
             <h5><a class="btn bg-dark" style="color: white" href="{% url 'account:avatar-load' %}">Change Avatar</a></h5>
         </div>
@@ -27,7 +33,9 @@
             <h5><p style="color: rgb(0, 20, 131)" >You are NOT a SuperUser</p></h5>
             {%endif%}
 
-            <h5><a class="btn btn-primary" style="color: white" href="{% url 'account:account-update' %}">Edit user date</a></h5>
+            <h5>
+                <a class="btn btn-primary" style="color: white" href="{% url 'account:account-update' %}">Edit user date</a>
+            </h5>
         </div>
         <br>
         <br>

@@ -35,3 +35,4 @@ class AvatarForm(ModelForm):
     class Meta:
         model = Avatar
         fields = ('image', )
+        

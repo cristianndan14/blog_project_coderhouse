@@ -15,6 +15,7 @@
         {% endif %}
         <hr></hr>
 
+        {% if pages %}
         <ul>
             {% for page in page_list %}
             <li>
@@ -38,12 +39,17 @@
             </li>
             {% endfor %}
         </ul>
+        {% else %}
+
+        <h2>No hay blogs aún</h2>
+
+        {% endif %}
 
 
 
 
     
 </div>
-
-
+</br>
+</br>
 {% endblock %}

@@ -109,6 +109,7 @@ def profile(request):
     context=context_dict,
     template_name="accounts/profile_detail.html")
 
+
 def get_avatar_url_ctx(request):
     avatars = Avatar.objects.filter(user=request.user.id)
     if avatars.exists():

@@ -23,9 +23,8 @@ urlpatterns = [
     path('', include('home.urls')),
     path('pages/', include('pages.urls')),
     path('message/', include('message.urls')),
-    path('about/', include('about.urls')),
     path('accounts/', include('accounts.urls')),
-    path(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    #path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 if settings.DEBUG:

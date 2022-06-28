@@ -10,3 +10,8 @@ git checkout final
 - Ejecutar proyecto
 ```bash
 python manage.py runserver
+```
+
+- Autor del proyecto
+```bash
+Cristian Ance

@@ -1,5 +1,5 @@
 from multiprocessing import context
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -35,3 +35,6 @@ class PageDeleteView(LoginRequiredMixin, DeleteView):
     model = Page
     success_url = reverse_lazy('page:page-list')
 
+
+def about(request):
+    return render(request, "pages/about.html")
