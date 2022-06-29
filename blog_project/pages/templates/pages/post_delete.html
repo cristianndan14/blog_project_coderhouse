@@ -1,0 +1,30 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block title %}Delete Blog Post{% endblock %}
+{% block blog_project_content %}
+
+<div class="container">
+    {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
+            <h2>Delete Post: {{ post.title }}</h2>
+            <hr>
+            <br>
+            <div class="form-group">
+                <form method="POST">
+                    {% csrf_token %}
+                    <strong>Are you sure?!</strong>
+                    </br></br>
+                    <button class="btn btn-primary">No</button>
+                    <button class="btn btn-secondary">Delete Post!</button>
+                </form>
+            </div>
+        {% else %}
+            You're not allowed here! (and you know it...)
+        {% endif %}
+    {% else %}
+        You're not allowed here! (and you know it...)
+    {% endif %}
+
+</div>>
+
+{% endblock %}

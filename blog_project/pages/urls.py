@@ -4,11 +4,10 @@ from pages import views
 
 app_name='page'
 urlpatterns = [
-    path('', views.PageListView.as_view(), name='page-list'),
-    path('add/', views.PageCreateView.as_view(), name='page-add'),
-    path('<int:pk>/detail', views.PageDetailView.as_view(), name='page-detail'),
-    path('<int:pk>/update', views.PageUpdateView.as_view(), name='page-update'),
-    path('<int:pk>/delete', views.PageDeleteView.as_view(), name='page-delete'),
     path('about/', views.about, name='about-page'),
-    # path(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    path('', views.PostView.as_view(), name="post-list"),
+    path('post/<int:pk>', views.PostDetailView.as_view(), name='post-detail'),
+    path('post_add/', views.AddPostView.as_view(), name="post-add"),
+    path('post/edit/<int:pk>', views.UpdatePostView.as_view(), name="post-update"),
+    path('post/<int:pk>/delete_confirm', views.DeletePostView.as_view(), name="post-delete"),
 ]

@@ -1,0 +1,34 @@
+{% extends "home/index.html" %}
+{% block title %}{{ post.title_tag }}{% endblock %}
+{% load static %}
+
+{% block blog_project_content %}
+
+
+<div class="container">
+    <h2>{{ post.title }}</h2>
+    <small>
+        By: 
+        {{ post.author }} - 
+        {{ post.post_date }}
+        {% if user.is_authenticated %}
+            {% if user.id == post.author.id %}
+                (
+                <a href="{% url 'page:post-update' post.id %}">Edit Post</a>
+                |
+                <a href="{% url 'page:post-delete' post.id %}">Delete Post</a>
+                )
+            {% endif %}
+        {% endif %}
+    </small> 
+    <hr>
+    </br>
+    {{ post.body | safe }}
+    <br>
+    <br>
+    <a href="{% url 'page:post-list' %}">Back</a>
+</div>
+<br>
+<br>
+
+{% endblock %}

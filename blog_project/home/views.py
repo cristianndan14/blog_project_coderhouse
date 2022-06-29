@@ -1,15 +1,15 @@
 from django.shortcuts import render
 from django.db.models import Q
-from pages.models import Page
+from pages.models import Post
 from accounts.models import Avatar
 
 
 def index(request):
     avatar_ctx = get_avatar_url_ctx(request)
     context_dict = {**avatar_ctx}
-    pages = Page.objects.all()
+    posts = Post.objects.all()
     context_dict.update({
-        'pages': pages,
+        'posts': posts,
     })
     print('context_dict: ', context_dict)
     return render(
@@ -32,10 +32,10 @@ def search(request):
     if request.GET['search_param']:
         search_param = request.GET['search_param']
         query = Q(title__contains=search_param)
-        query.add(Q(subtitle__contains=search_param), Q.OR)
-        pages = Page.objects.filter(query)
+        query.add(Q(author__username__contains=search_param), Q.OR)
+        posts = Post.objects.filter(query)
         context_dict.update({
-            'pages': pages,
+            'posts': posts,
             'search_param': search_param,
         })
     return render(

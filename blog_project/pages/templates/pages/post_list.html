@@ -1,30 +1,21 @@
 {% extends "home/index.html" %}
-
+{% block title %}{{ post.title_tag }}{% endblock %}
 {% load static %}
 {% block blog_project_content %}
 
 <div class="container">
-    <h2>Search Post</h2>
-    <hr>
-    </hr>
-
-    <form action="/search" method="GET">
-        <div>
-            <input type="text" name="search_param" id="posts_or_author" placeholder="Search..."
-            {% if search_param %} value="{{ search_param }}" {% endif %}
-            >
-            <input type="submit" value="Search">
-            <small><a style="color: blue" href="{% url 'home:main' %}"> (Refresh) </a></small>
+    <h2>Last Post</h2>
+    {% if user.is_authenticated %}
+    <div class="col-lg-2">
+        <div class="card mb-4">
+            <a class="card-body" href="{% url 'page:post-add' %}">Create new post</a>
         </div>
-
-    </form>
-
-    <hr>
-    </hr>
-
-    {% if posts %}
+    </div>
+    {% endif %}
+    <hr></hr>
+    {% if post_list %}
     <ul>
-        {% for post in posts %}
+        {% for post in post_list %}
         <li>
             <div class="card-body">{{post.title}} - 
                 <small>
@@ -39,8 +30,8 @@
                     |
                     <a href="{% url 'page:post-delete' post.id %}">Delete Post</a>
                     )
-                        {% endif %}  
-                    {% endif %}  
+                        {% endif %}
+                    {% endif %}                 
                 </small>
             </div>
         </li>
@@ -50,8 +41,10 @@
 
     <h2>No hay blogs aún</h2>
 
-    {% endif %}
-</div>>
+    {% endif %}      
 
+</div>
+<br>
+<br>
 
 {% endblock %}

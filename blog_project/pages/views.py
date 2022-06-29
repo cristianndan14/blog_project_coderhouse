@@ -1,40 +1,41 @@
-from multiprocessing import context
-from django.shortcuts import redirect, render
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from pages.models import Page
-
-
-class PageListView(ListView):
-    model = Page
-    template_name = "pages/page_list.html"
-
-
-class PageDetailView(DetailView):
-    model = Page
-    template_name = "pages/page_detail.html"
-    fields = ['title', 'subtitle', 'date', 'image', 'account', 'content_post']
-
-
-class PageCreateView(LoginRequiredMixin, CreateView):
-    model = Page
-    success_url = reverse_lazy('page:page-list')
-    fields = ['title', 'subtitle', 'image', 'content_post']
-
-
-class PageUpdateView(LoginRequiredMixin, UpdateView):
-    model = Page
-    success_url = reverse_lazy('page:page-list')
-    fields = ['title', 'subtitle', 'image', 'content_post']
-
-
-class PageDeleteView(LoginRequiredMixin, DeleteView):
-    model = Page
-    success_url = reverse_lazy('page:page-list')
-
+from pages.models import Post
+from .forms import PostForm, EditPostForm
 
 def about(request):
     return render(request, "pages/about.html")
+
+
+class PostView(ListView):
+    model = Post
+    template_name= 'post_list.html'
+    ordering = ['-post_date']
+
+
+
+class PostDetailView(DetailView):
+    model= Post
+    template_name= 'pages/post_details.html'
+
+
+class AddPostView(LoginRequiredMixin, CreateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'pages/post_add.html'
+    #fields = '__all__'
+
+class UpdatePostView(LoginRequiredMixin, UpdateView):
+    model = Post
+    form_class = EditPostForm
+    template_name = 'pages/post_update.html'
+    #fields = ['title', 'title_tag', 'body']
+
+class DeletePostView(DeleteView):
+    model = Post
+    success_url = reverse_lazy('page:post-list')
+    template_name = 'pages/post_delete.html'

@@ -1,19 +1,19 @@
 from distutils.command.upload import upload
 from django.db import models
-from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
+from django.urls import reverse
+from datetime import datetime, date
 
 
-class Page(models.Model):
-    title = models.CharField('Título', max_length=40)
-    subtitle = models.CharField('Subtítulo', max_length=130)
-    date = models.DateTimeField('Fecha de creación', auto_now = False, auto_now_add=True)
-    image = models.ImageField(upload_to='photos', null=True, blank=True)
-    account = models.ForeignKey(User, on_delete=models.CASCADE)
-    content_post = RichTextField('Contenido del post')
+class Post(models.Model):
+    title = models.CharField(max_length=60, blank=False)
+    title_tag = models.CharField(max_length=60)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField(blank=True)
+    post_date = models.DateField(auto_now_add=True)
     
-
     def __str__(self):
-        return f'{self.title} -- Fecha de creación: {self.date} -- {self.account}'
-
-
+        return self.title + ' | ' + str(self.author)
+    
+    def get_absolute_url(self):
+        return reverse('page:post-detail', args=(str(self.pk)) )
