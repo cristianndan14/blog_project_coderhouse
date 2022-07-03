@@ -26,19 +26,18 @@
     <ul>
         {% for post in posts %}
         <li>
-            <div class="card-body">{{post.title}} - 
+            <div class="card-body">
+                <a href="{% url 'page:post-detail' post.id %}">{{post.title}}</a> - 
                 <small>
                 {{post.author}} - 
                 {{ post.post_date }} - 
-                    <a href="{% url 'page:post-detail' post.id %}">(Read more)</a>
                     {% if user.is_authenticated %}
                         {% if user.id == post.author.id %}
-                    |
-                    (
-                    <a href="{% url 'page:post-update' post.id %}">Edit Post</a>
-                    |
-                    <a href="{% url 'page:post-delete' post.id %}">Delete Post</a>
-                    )
+                            (
+                            <a href="{% url 'page:post-update' post.id %}">Edit Post</a>
+                            |
+                            <a href="{% url 'page:post-delete' post.id %}">Delete Post</a>
+                            )
                         {% endif %}  
                     {% endif %}  
                 </small>

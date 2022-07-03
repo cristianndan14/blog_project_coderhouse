@@ -35,7 +35,7 @@ class UpdatePostView(LoginRequiredMixin, UpdateView):
     template_name = 'pages/post_update.html'
     #fields = ['title', 'title_tag', 'body']
 
-class DeletePostView(DeleteView):
+class DeletePostView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('page:post-list')
     template_name = 'pages/post_delete.html'

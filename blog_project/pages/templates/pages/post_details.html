@@ -28,11 +28,51 @@
         <img src="{{ post.header_image.url }}">
     {% endif %}
     <br>
-    <br>
     {{ post.body | safe }}
     <br>
     <br>
     <a href="{% url 'page:post-list' %}">Back</a>
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <hr>  
+    <h2>Comments...</h2>
+
+    {% if not post.comments.all %}
+        No Comments Yet... <a href="{% url 'message:add-comment' post.id %}">
+            Add one
+        </a>
+    {% else %}
+    <a href="{% url 'message:add-comment' post.id %}">Add Comment</a>
+    </br>
+    </br>
+        {% for comment in post.comments.all %}
+            <strong>
+                {{ comment.author }}
+            </strong>
+            <small> - {{ comment.date_added }} - 
+                {% if user.is_authenticated %}
+                    {% if user.id == post.author.id %}
+                        (
+                        <a href="{% url 'message:update-comment' comment.id %}">Edit comment</a>
+                        |
+                        <a href="{% url 'message:delete-comment' comment.id %}">Delete comment</a>
+                        )
+                    {% endif%}
+                {% endif%}
+            </small>
+            <br>
+                {{ comment.body | safe }}
+            <br>
+            <br>
+        {% endfor %}
+    <a href="{% url 'message:add-comment' post.id %}">Add Comment</a>
+    {% endif %}
+    </br>
+    </br>
+    <hr>    
 </div>
 <br>
 <br>

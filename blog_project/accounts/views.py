@@ -5,12 +5,8 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.forms.models import model_to_dict
 from django.shortcuts import redirect, render
-
-
 from accounts.forms import UserRegisterForm, UserEditForm, AvatarForm
-from django.contrib.auth.models import User
 from accounts.models import Avatar
-from django.views.generic.detail import DetailView
 
 
 def register(request):
@@ -18,7 +14,7 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Usuario creado exitosamente!")
+            messages.success(request, "User created successfully!!!")
             return redirect("account:account-login")
     form = UserRegisterForm()
     return render(
@@ -65,8 +61,8 @@ def account_update(request):
         form = UserEditForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-
-            return redirect('home:main')
+            messages.success(request, "User edited successfully!!!")
+            return redirect('account:profile-detail')
 
     form= UserEditForm(model_to_dict(user))
     return render(
@@ -91,7 +87,7 @@ def avatar_load(request):
                     os.remove(avatar.image.path)
                 avatar.image = image
             avatar.save()
-            messages.success(request, "Imagen cargada exitosamente")
+            messages.success(request, "Avatar loaded successfully!!!")
             return redirect('account:profile-detail')
 
     form= AvatarForm()

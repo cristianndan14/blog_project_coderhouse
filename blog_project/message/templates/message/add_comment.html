@@ -1,12 +1,10 @@
 {% extends "home/index.html" %}
 {% load static %}
-{% block title %}Edit Blog Post{% endblock %}
+{% block title %}Comment On Blog Post!{% endblock %}
 {% block blog_project_content %}
 
-
-
 <div class="container">
-            <h2>Update Post</h2>
+            <h2>Add Comment</h2>
             <hr>
             <br>
             <div class="form-group">
@@ -14,10 +12,16 @@
                     {% csrf_token %}
                     {{ form.media }}
                     {{ form.as_p }}
-                    <button class="btn btn-secondary">Update</button>
+                    <button class="btn btn-secondary">Comment</button>
                 </form>
             </div>
 </div>>
-        
+
+
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById("elder").value =
+        name;
+</script>
 
 {% endblock %}
