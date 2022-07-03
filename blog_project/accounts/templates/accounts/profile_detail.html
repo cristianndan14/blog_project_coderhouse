@@ -1,5 +1,6 @@
 {% extends "home/index.html" %}
 {% load static %}
+{% block title %}Profile{% endblock %}
 {% block blog_project_content %}
 
 <div class="container">
@@ -34,7 +35,8 @@
             {%endif%}
 
             <h5>
-                <a class="btn btn-primary" style="color: white" href="{% url 'account:account-update' %}">Edit user date</a>
+                <a class="btn btn-primary" style="color: white" href="{% url 'account:account-update' %}">Edit user</a>
+                <a class="btn btn-primary" style="color: white" href="{% url 'account:change-password' %}">Change Password</a>
             </h5>
         </div>
         <br>

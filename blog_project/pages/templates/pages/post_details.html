@@ -25,8 +25,9 @@
     <hr>
     </br>
     {% if post.header_image %}
-        <img src="{{ post.header_image.url }}">
+        <img src="{{ post.header_image.url }}" alt="{{ post.header_image }}" height="600">
     {% endif %}
+    <br>
     <br>
     {{ post.body | safe }}
     <br>

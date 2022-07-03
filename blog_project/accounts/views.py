@@ -1,12 +1,14 @@
 import os
 from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.forms.models import model_to_dict
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 from accounts.forms import UserRegisterForm, UserEditForm, AvatarForm
 from accounts.models import Avatar
+from django.contrib.auth.views import PasswordChangeView
 
 
 def register(request):
@@ -111,3 +113,8 @@ def get_avatar_url_ctx(request):
     if avatars.exists():
         return {"url": avatars[0].image.url}
     return {}
+
+
+class PasswordsChangeView(PasswordChangeView):
+    from_class = PasswordChangeForm
+    success_url = reverse_lazy('account:profile-detail')
