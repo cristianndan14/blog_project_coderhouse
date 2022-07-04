@@ -4,7 +4,7 @@
 ```bash
 git clone https://github.com/cristianndan14/Blog_project.git
 cd Blog_project
-git checkout finalblog
+git checkout master
 ```
 
 - Activar entorno virtual (windows)
