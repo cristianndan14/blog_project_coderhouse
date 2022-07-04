@@ -7,7 +7,7 @@ from accounts.models import Avatar
 
 class UserRegisterForm(UserCreationForm):
 
-    username = forms.CharField(label='username', min_length=3)
+    username = forms.CharField(label='Username', min_length=3)
     first_name = forms.CharField(label='Nombre', min_length=3)
     last_name = forms.CharField(label='Apellido', min_length=3)
     email = forms.EmailField(label='Correo electrónico')

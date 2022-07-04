@@ -31,3 +31,8 @@ python manage.py runserver
 - Autor del proyecto
 ```bash
 Cristian Ance
+```
+
+- Link del video!!!
+```bash
+https://www.youtube.com/watch?v=1DdulmYE7Dk

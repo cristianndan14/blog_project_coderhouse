@@ -32,7 +32,7 @@
     {{ post.body | safe }}
     <br>
     <br>
-    <a href="{% url 'page:post-list' %}">Back</a>
+    <a class="btn btn-secondary" href="{% url 'page:post-list' %}" role="button">Back</a>
     <br>
     <br>
 
@@ -42,20 +42,21 @@
     <h2>Comments...</h2>
 
     {% if not post.comments.all %}
-        No Comments Yet... <a href="{% url 'message:add-comment' post.id %}">
-            Add one
-        </a>
+        No Comments Yet...
+        <br>
+        <br>
+        <a class="btn btn-primary" href="{% url 'message:add-comment' post.id %}" role="button">Add one</a> 
     {% else %}
-    <a href="{% url 'message:add-comment' post.id %}">Add Comment</a>
-    </br>
-    </br>
+        <a class="btn btn-primary" href="{% url 'message:add-comment' post.id %}" role="button">Add Comment</a> 
+        </br>
+        </br>
         {% for comment in post.comments.all %}
             <strong>
                 {{ comment.author }}
             </strong>
             <small> - {{ comment.date_added }} - 
                 {% if user.is_authenticated %}
-                    {% if user.id == post.author.id %}
+                    {% if user.id == comment.author.id %}
                         (
                         <a href="{% url 'message:update-comment' comment.id %}">Edit comment</a>
                         |
@@ -69,7 +70,7 @@
             <br>
             <br>
         {% endfor %}
-    <a href="{% url 'message:add-comment' post.id %}">Add Comment</a>
+        <a class="btn btn-primary" href="{% url 'message:add-comment' post.id %}" role="button">Add Comment</a> 
     {% endif %}
     </br>
     </br>
