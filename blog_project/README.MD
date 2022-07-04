@@ -2,14 +2,16 @@
 
 - Clonar el proyecto y cambiar de rama
 ```bash
-git clone https://github.com/cristianndan14/Blog_project.git
-cd Blog_project
+git clone https://github.com/cristianndan14/blog_project_coderhouse.git
+cd blog_project
 git checkout master
 ```
 
-- Activar entorno virtual (windows)
+- Crear y Activar entorno virtual (windows)
 ```bash
+python -m venv venv
 source venv/Scripts/activate
+desactivar -> deactivate
 ```
 
 - Crear y activar entorno virtual (Linux)
@@ -33,6 +35,6 @@ python manage.py runserver
 Cristian Ance
 ```
 
-- Link del video!!!
+- Link del video
 ```bash
-https://www.youtube.com/watch?v=1DdulmYE7Dk
+https://youtu.be/1DdulmYE7Dk
