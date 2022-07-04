@@ -1,8 +1,6 @@
-from distutils.command.upload import upload
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-from datetime import datetime, date
 from ckeditor.fields import RichTextField
 
 
