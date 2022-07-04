@@ -1,10 +1,9 @@
 # Instrucciones para ejecutar este proyecto
 
-- Clonar el proyecto y cambiar de rama
+- Clonar el proyecto
 ```bash
 git clone https://github.com/cristianndan14/blog_project_coderhouse.git
 cd blog_project
-git checkout master
 ```
 
 - Crear y Activar entorno virtual (windows)
